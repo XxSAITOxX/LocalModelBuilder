@@ -1,0 +1,46 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+    container_name: mlp-backend
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./backend:/app
+      - ./artifacts:/app/artifacts
+
+    environment:
+      PYTHONUNBUFFERED: 1
+
+    gpus:
+      - driver: nvidia
+        count: all
+        capabilities:
+          - gpu
+
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: mlp-frontend
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      LOCAL_UID: "${LOCAL_UID:-1000}"
+      LOCAL_GID: "${LOCAL_GID:-1000}"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped

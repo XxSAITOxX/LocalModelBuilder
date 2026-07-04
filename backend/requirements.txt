@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+
+onnx
+onnxruntime
+
+numpy
+scikit-learn
+pydantic
+python-multipart
