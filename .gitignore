@@ -220,20 +220,50 @@ __marimo__/
 # FastAPI / local app outputs
 artifacts/
 logs/
+uploads/
+data/
+datasets/
 
 # Trained models
 *.pt
 *.pth
 *.ckpt
 *.onnx
+*.safetensors
+*.gguf
+*.bin
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.keras
+*.tflite
+*.pb
+*.engine
+
+# Local datasets / exports
+*.csv
+*.tsv
+*.jsonl
+*.parquet
+*.npy
+*.npz
 
 # Node.js
 node_modules/
 coverage/
 .npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # React / Vite
 .vite/
+
+# Docker local overrides
+docker-compose.override.yml
 
 # OS
 .DS_Store
